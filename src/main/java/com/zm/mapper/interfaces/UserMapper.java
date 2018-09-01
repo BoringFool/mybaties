@@ -1,4 +1,4 @@
-package com.zm.mapper;
+package com.zm.mapper.interfaces;
 
 import java.util.List;
 import com.zm.entity.User;

@@ -27,22 +27,22 @@
 	<!-- 数据库 -->
 	<context:property-placeholder location="classpath*:db.properties" />
 
-	<!--DataSource-数据库关联(c3p0) -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="user" value="${jdbc.user}"></property>
+	<!--DataSource-数据库关联(druid) -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="username" value="${jdbc.userName}"></property>
 		<property name="password" value="${jdbc.passowrd}"></property>
-		<property name="driverClass" value="${jdbc.driverClass}"></property>
-		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+		<property name="url" value="${jdbc.jdbcUrl}"></property>
 	</bean>
 
 	<!-- MyBaties整合 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 配置数据源 -->
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
-		<!-- <property name="typeAliasesPackage" value="com.zm.entity"></property> -->
+		<!-- <property name="configLocation" value="classpath:sqlMapConfig.xml" /> -->
+		<property name="typeAliasesPackage" value="com.zm.entity"></property>
 		<!-- 自动扫描mapping.xml文件，也可在sqlMapConfig.xml中单独指定XML文件 -->
-		<property name="mapperLocations" value="com.zm.mapper.*.xml" />
+		<property name="mapperLocations" value="mapper/*.xml" />
 	</bean>
 
 	<!-- 创建Mapper层的对象 -->
@@ -74,14 +74,6 @@
 			<list>
 				<bean
 					class="org.springframework.http.converter.StringHttpMessageConverter">
-					<property name="supportedMediaTypes">
-						<list>
-							<value>text/html; charset=UTF-8</value>
-							<value>application/json;charset=UTF-8</value>
-						</list>
-					</property>
-				</bean>
-				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 					<property name="supportedMediaTypes">
 						<list>
 							<value>text/html; charset=UTF-8</value>

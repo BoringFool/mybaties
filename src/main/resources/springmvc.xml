@@ -25,7 +25,28 @@
 	<!-- <mvc:resources mapping="/images/**" location="/WEB-INF/images/" /> -->
 
 	<!-- if you use annotation you must configure following setting 注解 -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+		<mvc:message-converters
+			register-defaults="true">
+			<!-- @Responsebody 支持的返回类型， Json对空键值的处理方式 和 统一的日期返回格式 -->
+			<bean
+				class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+				<property name="features">
+					<list>
+						<value>WriteMapNullValue</value>
+						<value>QuoteFieldNames</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+
+	</mvc:annotation-driven>
 
 
 	<!-- configure 视图解析器 -->
@@ -47,16 +68,6 @@
 
 
 
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/user/**" />
-			<mvc:exclude-mapping path="/user/in" />
-			<mvc:exclude-mapping path="/user/register" />
-			<mvc:exclude-mapping path="/user/checkState" />
-			<bean id="userInterceptor"
-				class="com.zm.interceptor.UserConInterceptor"></bean>
-		</mvc:interceptor>
-		<!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
-	</mvc:interceptors>
+	
 
 </beans>

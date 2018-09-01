@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.zm.dao.UserDao;
 import com.zm.entity.User;
-import com.zm.mapper.UserMapper;
+import com.zm.mapper.interfaces.UserMapper;
 import com.zm.service.UserService;
 import com.zm.tools.DBTools;
 
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void test() {
 		userdao.test();
-		System.out.println("userservice");
+		System.out.println("userservice*****************************************************");
 
 	}
 
