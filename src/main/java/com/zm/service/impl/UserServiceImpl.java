@@ -38,9 +38,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int update(User user, int id) {
-		//int g = sqlsession.update("UserMapper.updateUser", user);
-		//System.out.println(g);
-		return (Integer) null;
+		int g = sqlsession.update("UserMapper.updateUser", user);
+		System.out.println(g);
+		return g;
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User selectTwoArg(HashMap<String, String> map) {
-		User u=sqlsession.selectOne("UserMapper.updateUser", map);
+		User u = sqlsession.selectOne("UserMapper.updateUser", map);
 		return u;
 	}
 
