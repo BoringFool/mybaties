@@ -28,7 +28,7 @@
 
 	<update id="updateUser">
 		update t_user set
-		username=#{username},password=#{password},account=#{age} where
+		username=#{username},password=#{password},age=#{age} where
 		id=#{id}
 	</update>
 
@@ -41,7 +41,11 @@
 		resultMap="userMap">
 		select * from t_user where id=#{id}
 	</select>
-
+	
+	<select id="selectTwoArg" parameterType="hashmap" resultMap="userMap">
+			select * from t_user where username=#{username},age=#{age}
+	</select>
+	
 	<select id="selectAllUser" resultMap="userMap">
 		select * from t_user
 	</select>

@@ -3,13 +3,12 @@ package com.zm.dao.impl;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
 import com.zm.dao.UserDao;
 import com.zm.entity.User;
 
-@MapperScan(basePackages = "com.zm.mapper")
+
 @Repository("userdao")
 public class UserDaoImpl implements UserDao {
 
@@ -18,7 +17,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void test() {
-		System.out.println("DAO*********************************************************");
+		System.out.println("DAO");
 
 	}
 

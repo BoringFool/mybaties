@@ -1,16 +1,17 @@
 package com.zm.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zm.dao.UserDao;
 import com.zm.entity.User;
 import com.zm.mapper.interfaces.UserMapper;
 import com.zm.service.UserService;
@@ -20,13 +21,44 @@ import com.zm.tools.DBTools;
 @Transactional
 public class UserServiceImpl implements UserService {
 	@Resource
-	UserDao userdao;
+	SqlSessionTemplate sqlsession;
 
 	@Override
-	public void test() {
-		userdao.test();
-		System.out.println("userservice*****************************************************");
+	public void save(User u) {
+		// UserMapper userMapper=sqlsession.getMapper(UserMapper.class);
+		sqlsession.insert("UserMapper.insertUser", u);
 
+	}
+
+	@Override
+	public void delete(int id) {
+		int g = sqlsession.delete("UserMapper.deleteUser", id);
+		System.out.println(g);
+	}
+
+	@Override
+	public int update(User user, int id) {
+		//int g = sqlsession.update("UserMapper.updateUser", user);
+		//System.out.println(g);
+		return (Integer) null;
+	}
+
+	@Override
+	public User selectById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User selectTwoArg(HashMap<String, String> map) {
+		User u=sqlsession.selectOne("UserMapper.updateUser", map);
+		return u;
+	}
+
+	@Override
+	public List<User> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -123,4 +155,5 @@ public class UserServiceImpl implements UserService {
 			session.close();
 		}
 	}
+
 }

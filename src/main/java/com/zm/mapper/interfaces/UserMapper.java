@@ -1,6 +1,8 @@
 package com.zm.mapper.interfaces;
 
 import java.util.List;
+import java.util.Map;
+
 import com.zm.entity.User;
 
 public interface UserMapper {
@@ -48,4 +50,6 @@ public interface UserMapper {
 	 * @throws Exception
 	 */
 	public List<User> selectAllUser() throws Exception;
+
+	public User selectTwoArg(Map<String, String> map) throws Exception;
 }
