@@ -18,4 +18,10 @@ public interface UserService {
 	public List<User> selectAll();
 
 	public User selectTwoArg(HashMap<String, String> map);
+
+	public int register(User u);
+
+	public int login(User u);
+
+	public int checkName(String name);
 }

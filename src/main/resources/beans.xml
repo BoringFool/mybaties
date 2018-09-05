@@ -51,7 +51,7 @@
 
 	<!-- 创建Mapper层的对象 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.zm.mapper" />
+		<property name="basePackage" value="com.zm.mapper.interfaces" />
 		<property name="sqlSessionFactoryBeanName"
 			value="sqlSessionFactory"></property>
 	</bean>

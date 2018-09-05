@@ -51,5 +51,8 @@ public interface UserMapper {
 	 */
 	public List<User> selectAllUser() throws Exception;
 
+
 	public User selectTwoArg(Map<String, String> map) throws Exception;
+
+	public User getByName(String name) throws Exception;
 }
