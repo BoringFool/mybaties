@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
@@ -88,6 +89,16 @@ public class UserServiceImpl implements UserService {
 			return 1;
 		} else {
 			return 0;
+		}
+	}
+
+	
+	public void signout(HttpServletRequest req) {
+		String userName = (String) req.getSession().getAttribute("username");
+		boolean login = (boolean) req.getSession().getAttribute("login");
+		if (login == true && userName != null) {
+			req.getSession().removeAttribute("username");
+			req.getSession().removeAttribute("login");
 		}
 	}
 

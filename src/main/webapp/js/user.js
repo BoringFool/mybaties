@@ -1,6 +1,10 @@
 $(document).ready(function() {
 	var user = new User();
 	var nameOk = false;
+	if(name!=null){
+		$("div#nameSpace").text(name);
+	}
+	
 	// 注册
 	$("button#sub").click(function() {
 				var userName = $("input#username").val();
@@ -21,15 +25,18 @@ $(document).ready(function() {
 
 	// 登录
 	$("button#subL").click(function() {
-				alert("ok");
 				var userName = $("input#usernameL").val();
 				var password = $("input#passwordL").val();
 				if (nameOk == true) {
-					//用来判断用户名是否存在，因为不同div，所以后端做了用户名验证
+					// 用来判断用户名是否存在，因为不同div，所以后端做了用户名验证
 				}
 				user.login(userName, password);
 			});
 
+	// 退出
+	$("button#signout").click(function() {
+			user.signout();
+			});
 	function User() {
 		this.check = function() {
 			// 直接调用报错，要赋值给$this调用
@@ -95,10 +102,11 @@ $(document).ready(function() {
 						success : function(data) {
 							if (data == 1) {
 								alert("登陆成功");
+								window.location.reload();
 							} else if (data == -1) {
 								alert("用户不存在");
 							} else {
-								alert("登陆失败，密码错误");
+								alert("登陆失败，密码错误,或者已经登陆");
 							}
 						},
 						error : function(xhr, status) {
@@ -106,5 +114,17 @@ $(document).ready(function() {
 						}
 					});
 		}
+		this.signout = function() {
+			$.ajax({
+						type : "get",
+						url : "http://localhost:8080/mybaites/user/signout",
+						success : function() {
+							window.location.reload();
+						},
+						error : function() {
+						}
+					});
+		}
+
 	}
 });

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GoodsMapper">
+	<resultMap type="Goods" id="goodsMap">
+		<id property="id" column="id" javaType="java.lang.Integer" />
+		<result property="name" column="" javaType="String" />
+		<result property="provider" column="" javaType="String" />
+		<result property="price" column="" javaType="Integer" />
+		<result property="numberStore" column="" javaType="Integer" />
+	</resultMap>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into t_goods(name,price,number_store,provider) values
+		(#{name},#{price},#{numberStore},#{provider})
+	</insert>
+	<select id="selectAll" resultMap="goodsMap">
+		select * from t_goods
+	</select>
+</mapper>

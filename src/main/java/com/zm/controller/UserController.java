@@ -41,26 +41,33 @@ public class UserController {
 	public Integer register(@RequestBody User u) {
 		return userservice.register(u);
 	}
-	
+
 	@RequestMapping("checkName")
 	@ResponseBody
 	public int checkUsername(@RequestParam("username") String userName) {
 		return userservice.checkName(userName);
 	}
-	
+
 	@RequestMapping("login")
 	@ResponseBody
-	public int login(@RequestBody User u,HttpServletRequest req) {
-		int result=userservice.login(u);
-		if(result==1) {
-			req.setAttribute("login", true);
-			req.setAttribute("username", u.getUsername());
+	public int login(@RequestBody User u, HttpServletRequest req) {
+		int result = userservice.login(u);
+		if (result == 1) {
+			req.getSession().setAttribute("login", true);
+			req.getSession().setAttribute("username", u.getUsername());
 			return 1;
-		}else if(result==-1) {
+		} else if (result == -1) {
 			return -1;
-		}else {
+		} else {
 			return 0;
 		}
+	}
+
+	@RequestMapping("signout")
+	public String signout(HttpServletRequest req) {
+		userservice.signout(req);
+		return "user";
+
 	}
 
 }

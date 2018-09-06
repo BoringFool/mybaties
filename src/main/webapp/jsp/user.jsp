@@ -8,6 +8,9 @@
 <script type="text/javascript" src="../js/user.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/user.css">
 <title>Insert title here</title>
+<script>
+	var name="${sessionScope.username}";
+</script>
 </head>
 <body>
 	<div class="outer">
@@ -33,6 +36,12 @@
 		</div>
 		<div>
 			<button id="subL" class="s" type="button">登陆</button>
+		</div>
+		<div id="nameSpace" style="width:400px;height:25px;text-align:center;border:1px solid red;padding-top:5px;margin-top:5px;">
+			
+		</div>
+		<div>
+			<button type="button" id="signout" class="s">退出</button>
 		</div>
 	</div>
 </body>

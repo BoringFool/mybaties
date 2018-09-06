@@ -4,6 +4,7 @@
 <configuration>
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/GoodsMapper.xml"/>
 			<!-- 连接配置文件 -->
 	</mappers>
 </configuration>

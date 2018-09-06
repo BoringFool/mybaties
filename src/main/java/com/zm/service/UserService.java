@@ -3,6 +3,8 @@ package com.zm.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.zm.entity.User;
 
 public interface UserService {
@@ -24,4 +26,6 @@ public interface UserService {
 	public int login(User u);
 
 	public int checkName(String name);
+
+	public void signout(HttpServletRequest req);
 }
