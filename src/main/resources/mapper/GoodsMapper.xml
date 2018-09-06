@@ -14,7 +14,13 @@
 		into t_goods(name,price,number_store,provider) values
 		(#{name},#{price},#{numberStore},#{provider})
 	</insert>
+
 	<select id="selectAll" resultMap="goodsMap">
 		select * from t_goods
+	</select>
+
+	<select id="showDetail" parameterType="int" resultMap="goodsMap">
+		select *
+		from t_goods where id=#{id}
 	</select>
 </mapper>

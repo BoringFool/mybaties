@@ -1,0 +1,68 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-align: none;
+}
+
+.outer {
+	width: 280px;
+	height: 180px;
+	margin: 5px;
+	float: left;
+	border: 1px solid #313131;
+	overflow: hidden;
+}
+
+.outer input {
+	float: right;
+}
+
+.subButton {
+	width: 80px;
+	height: 30px;
+	margin: 0 auto;
+	display: block;
+}
+
+.showItem {
+	width: 280px;
+	height: 30px;
+	margin: 4px 0;
+	border: 1px solid #808080;
+}
+
+.showItem span {
+	height: 30px;
+	display: inline-block;
+	border-left: 1px solid #808080;
+}
+
+.diff_f {
+	width: 68px;
+}
+
+.diff_s {
+	width: 140px;
+}
+
+.item {
+	width: 278px;
+	height: 120px;
+	font-size:12px;
+	margin-top: 2px;
+}
+.item div{
+	height: 23px;
+	width: 276px;
+	text-align:center;
+	line-height:23px;
+	margin-top:-1px;
+	border: 1px solid #808080;
+}

@@ -31,4 +31,10 @@ public class GoodsServiceImpl implements GoodsService {
 		return listG;
 	}
 
+	@Override
+	public Goods showDetail(int id) {
+		Goods g = sqlsession.selectOne("GoodsMapper.showDetail", id);
+		return g;
+	}
+
 }

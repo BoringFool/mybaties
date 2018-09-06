@@ -8,4 +8,6 @@ public interface GoodsService {
 	public int save(Goods g);
 
 	public List<Goods> selectAll();
+
+	public Goods showDetail(int id);
 }
