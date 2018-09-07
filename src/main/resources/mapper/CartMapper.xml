@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartMapper">
+	<resultMap type="Cart" id="cartMap">
+		<id property="id" column="id" javaType="Integer" />
+		<result property="number" column="number" javaType="Integer" />
+		<association property="good" resultMap="goodsMap"></association>
+	</resultMap>
+	<resultMap type="Goods" id="goodsMap">
+		<id property="id" column="gid" javaType="Integer" />
+		<result property="name" column="name" javaType="String" />
+		<result property="price" column="price" javaType="Integer" />
+		<result property="numberStore" column="number_store"
+			javaType="integer" />
+		<result property="provider" column="provider" javaType="String" />
+	</resultMap>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into t_cart(number,goodsId) values
+		(#{number},#{good.id});
+	</insert>
+
+	<!-- 不单独把gid命名，会导致结果cart的id覆盖goods的id -->
+	<select id="cartWithGoods" parameterType="int"
+		resultMap="cartMap">
+		select *,g.id as gid from t_cart as c left outer join
+		t_goods as g on
+		c.goodsId=g.id where c.id=#{id}
+	</select>
+</mapper>

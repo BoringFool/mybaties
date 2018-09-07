@@ -17,7 +17,7 @@ import com.zm.service.UserService;
 @Transactional
 public class UserServiceImpl implements UserService {
 	@Resource
-	SqlSessionTemplate sqlsession;
+	private SqlSessionTemplate sqlsession;
 
 	@Override
 	public void save(User u) {

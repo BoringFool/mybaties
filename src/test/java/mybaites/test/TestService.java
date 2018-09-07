@@ -70,4 +70,54 @@ public class TestService {
 		Te t = new Te("");
 
 	}
+
+	@Test
+	public void test_str() {
+		int[] a = { -2, 7, 2, 15 };
+		int[] b = twoSum(a, 4);
+		System.out.println(b);
+	}
+
+	public int strStr(String haystack, String needle) {
+		if ("".equals(needle)) {
+			return 0;
+		} else if (haystack.length() < needle.length()) {
+			return -1;
+		} else {
+			int inde = -1;
+			boolean r = true;
+			char[] hay = haystack.toCharArray();
+			char[] nee = needle.toCharArray();
+			int diff = hay.length - nee.length;
+			for (int i = 0; i <= diff; i++) {
+				if ((hay[i] == nee[0])) {
+
+					for (int j = 1; j < nee.length; j++) {
+						if (!(nee[j] == hay[i + j])) {
+							r = false;
+							break;
+						}
+					}
+					if (r) {
+						inde = i;
+						break;
+					} else {
+						r = true;
+					}
+				}
+			}
+			return inde;
+		}
+	}
+
+	public int[] twoSum(int[] nums, int target) {
+		for (int i = 0; i < nums.length; i++) {
+			for (int j = i + 1; j < nums.length; j++) {
+				if (nums[i] + nums[j] == target) {
+					return new int[] { i, j };
+				}
+			}
+		}
+		throw new IllegalArgumentException("No solution");
+	}
 }

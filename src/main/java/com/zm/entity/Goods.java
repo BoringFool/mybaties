@@ -1,7 +1,13 @@
 package com.zm.entity;
 
-public class Goods {
+import java.io.Serializable;
 
+public class Goods implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 270161076492771341L;
 	private int id;
 	private String name;
 	private int price;

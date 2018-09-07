@@ -5,6 +5,7 @@
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml" />
 		<mapper resource="mapper/GoodsMapper.xml"/>
+		<mapper resource="mapper/CartMapper.xml"/>
 			<!-- 连接配置文件 -->
 	</mappers>
 </configuration>

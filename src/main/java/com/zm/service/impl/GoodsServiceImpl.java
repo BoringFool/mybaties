@@ -16,7 +16,7 @@ import com.zm.service.GoodsService;
 public class GoodsServiceImpl implements GoodsService {
 
 	@Resource
-	SqlSessionTemplate sqlsession;
+	private SqlSessionTemplate sqlsession;
 
 	@Override
 	public int save(Goods g) {
