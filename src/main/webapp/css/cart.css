@@ -1,0 +1,44 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.savesClass {
+	width: 120px;
+	height: 50px;
+	cursor:pointer;
+	margin:4px;
+	background: #80ff00;
+	border: 1px solid #5bb700;
+}
+#listD{
+	width: 120px;
+	position: absolute;
+	left:136px;
+	top:80px;
+}
+.eachL{
+	width: 118px;
+	height: 86px;
+	float:left;
+	margin:2px;
+	text-align: center;
+	border: 1px solid #888888;
+}
+.changeD{
+	display: inline-block;
+	width: 80px;
+	height: 26px;
+	padding:4px;
+	border:1px solid red;
+	line-height: 30px;
+	color: #c0c0c0;
+}

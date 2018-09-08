@@ -21,6 +21,22 @@
 		(#{number},#{good.id});
 	</insert>
 
+	<select id="getById" parameterType="int" resultMap="cartMap">
+		select * from
+		t_cart where id=#{id}
+	</select>
+
+	<update id="update">
+		update t_cart set number = #{number} where id=#{id}
+	</update>
+
+	<select id="cartList" resultMap="cartMap">
+		select c.id,c.number,g.id as
+		gid,g.name from t_cart
+		as c left outer join t_goods as g on
+		c.goodsId=g.id
+	</select>
+
 	<!-- 不单独把gid命名，会导致结果cart的id覆盖goods的id -->
 	<select id="cartWithGoods" parameterType="int"
 		resultMap="cartMap">
