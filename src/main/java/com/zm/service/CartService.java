@@ -7,6 +7,8 @@ import com.zm.entity.Cart;
 public interface CartService {
 	public void save(Cart c);
 
+	public int delete(int id);
+
 	public Cart getById(int id);
 
 	public int update(Cart c);

@@ -18,6 +18,7 @@ public class SingleLinkedList {
 			this.data = data;
 		}
 	}
+	
 
 	// 在链表头添加元素
 	public Object addHead(Object obj) {

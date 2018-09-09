@@ -45,4 +45,9 @@ public class CartServiceImpl implements CartService {
 		return sqlsession.update("CartMapper.update", c);
 	}
 
+	@Override
+	public int delete(int id) {
+		return sqlsession.delete("CartMapper.delete", id);
+	}
+
 }

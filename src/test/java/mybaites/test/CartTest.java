@@ -25,7 +25,7 @@ public class CartTest {
 
 	@Test
 	public void test_save() {
-		Goods good = goodsServicec.showDetail(4);
+		Goods good = goodsServicec.showDetail(2);
 		Cart c = new Cart();
 		c.setNumber(33);
 		c.setGood(good);

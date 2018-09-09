@@ -21,6 +21,11 @@
 		(#{number},#{good.id});
 	</insert>
 
+	<delete id="delete" parameterType="int">
+		delete from t_cart where
+		id=#{id}
+	</delete>
+
 	<select id="getById" parameterType="int" resultMap="cartMap">
 		select * from
 		t_cart where id=#{id}

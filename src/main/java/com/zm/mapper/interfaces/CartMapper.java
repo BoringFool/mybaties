@@ -9,6 +9,8 @@ public interface CartMapper {
 
 	public void save(Cart c);
 
+	public void delete(int id);
+
 	public void update(Cart c);
 
 	public List<Cart> cartList();

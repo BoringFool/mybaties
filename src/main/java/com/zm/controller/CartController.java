@@ -27,6 +27,12 @@ public class CartController {
 		return 1;
 	}
 
+	@RequestMapping("delete")
+	@ResponseBody
+	public Integer delete(@RequestParam("id") Integer id) {
+		return cartservice.delete(id);
+	}
+
 	@RequestMapping("getbyid")
 	@ResponseBody
 	public Cart getById(@RequestParam("id") Integer id) {
