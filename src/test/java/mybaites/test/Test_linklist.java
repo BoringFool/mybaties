@@ -73,7 +73,6 @@ public class Test_linklist {
 		String in = "abcabcbbdaaa";
 		char[] all = in.toCharArray();
 
-
 		List<Character> copy = new ArrayList<>();
 		for (int j = 0; j < all.length; j++) {
 			if (!copy.contains(all[j])) {
@@ -111,7 +110,6 @@ public class Test_linklist {
 			System.out.println(n.val + " " + n.next.next.next.val);
 		}
 
-
 	}
 
 	private class Node {
@@ -137,5 +135,24 @@ public class Test_linklist {
 			map.put(s.charAt(j), j + 1);
 		}
 		System.out.println(ans);
+	}
+
+	@Test
+	public void test_sysout() {
+		System.out.println(isPalindrome(121));
+	}
+
+	public boolean isPalindrome(int x) {
+		if (x < 10 && x > 0)
+			return true;
+		if (x < 0 || (x % 10 == 0 && x != 0)) {
+			return false;
+		}
+		int re = 0;
+		for (int i = x; i > 0;) {
+			re = re * 10 + i % 10;
+			i = i / 10;
+		}
+		return x == re;
 	}
 }
