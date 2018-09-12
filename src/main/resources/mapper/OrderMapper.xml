@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">
+	<resultMap type="Order" id="orderMap">
+		<id property="id" column="id" javaType="Integer" />
+		<result property="number" column="number" javaType="Integer" />
+		<result property="dataO" column="dataO" javaType="Calendar" />
+		<result property="dataP" column="dataP" javaType="Calendar" />
+		<result property="good" column="goodsId" javaType="Integer" />
+		<result property="payState" column="payState"
+			javaType="boolean" />
+	</resultMap>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert into
+		t_order(number,dataO,dataP,goodsId,payState) as o values(
+		#{number},#{dataO},#{dataP},#{good.id},#{payState}
+		);
+	</insert>
+
+
+
+</mapper>

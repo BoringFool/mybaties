@@ -137,11 +137,6 @@ public class Test_linklist {
 		System.out.println(ans);
 	}
 
-	@Test
-	public void test_sysout() {
-		System.out.println(isPalindrome(121));
-	}
-
 	public boolean isPalindrome(int x) {
 		if (x < 10 && x > 0)
 			return true;
@@ -154,5 +149,79 @@ public class Test_linklist {
 			i = i / 10;
 		}
 		return x == re;
+	}
+
+	public int romanToInt(String s) {
+		int re = 0;
+		for (int i = 0; i < s.length(); i++) {
+			int n = i == s.length() - 1 ? 0 : 1;
+			switch (s.charAt(i)) {
+			case 'V':
+				re += 5;
+				break;
+
+			case 'L':
+				re += 50;
+				break;
+
+			case 'D':
+				re += 500;
+				break;
+
+			case 'M':
+				re += 1000;
+				break;
+
+			default:
+				switch (s.charAt(i)) {
+				case 'I':
+					if (s.charAt(i + n) == 'V') {
+						re += 4;
+						i = i + 1;
+					} else if (s.charAt(i + n) == 'X') {
+						re += 9;
+						i = i + 1;
+					} else {
+						re += 1;
+					}
+					;
+					break;
+
+				case 'X':
+					if (s.charAt(i + n) == 'L') {
+						re += 40;
+						i = i + 1;
+					} else if (s.charAt(i + n) == 'C') {
+						re += 90;
+						i = i + 1;
+					} else {
+						re += 10;
+					}
+					;
+					break;
+
+				case 'C':
+					if (s.charAt(i + n) == 'D') {
+						re += 400;
+						i = i + 1;
+					} else if (s.charAt(i + n) == 'M') {
+						re += 900;
+						i = i + 1;
+					} else {
+						re += 100;
+					}
+					;
+					break;
+
+				}
+				break;
+			}
+		}
+		return re;
+	}
+
+	@Test
+	public void test_sysout() {
+		System.out.println(romanToInt("IXLVIII"));
 	}
 }
