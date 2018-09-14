@@ -98,7 +98,7 @@ public class Test_linklist {
 			for (int j = 0; j < all.length; j++) {
 				if (copy.get(i) == all[j]) {
 
-					curr.next = new Node(j);
+					curr.next = new Node('n');
 					curr = curr.next;
 				}
 			}
@@ -110,15 +110,6 @@ public class Test_linklist {
 			System.out.println(n.val + " " + n.next.next.next.val);
 		}
 
-	}
-
-	private class Node {
-		int val;
-		Node next;
-
-		public Node(int data) {
-			this.val = data;
-		}
 	}
 
 	@Test
@@ -220,8 +211,53 @@ public class Test_linklist {
 		return re;
 	}
 
+	public boolean isValid(String s) {
+		Node h = new Node('a');
+		Node c = h;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '{' || s.charAt(i) == '[' || s.charAt(i) == '(') {
+				Node a = new Node(s.charAt(i));
+				a.next = c;
+				c = a;
+			} else {
+				switch (s.charAt(i)) {
+				case '}':
+					if (c.val != '{')
+						return false;
+					c = c.next;
+					break;
+
+				case ')':
+					if (c.val != '(')
+						return false;
+					c = c.next;
+					break;
+
+				case ']':
+					if (c.val != '[')
+						return false;
+					c = c.next;
+					break;
+				}
+			}
+		}
+		
+		return c.val=='a'?true:false;
+
+	}
+
+	private class Node {
+		char val;
+		Node next;
+
+		public Node(char data) {
+			this.val = data;
+		}
+	}
+
 	@Test
 	public void test_sysout() {
-		System.out.println(romanToInt("IXLVIII"));
+		Test_linklist t = new Test_linklist();
+		t.isValid("({})");
 	}
 }
