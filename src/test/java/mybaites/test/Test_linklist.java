@@ -241,8 +241,8 @@ public class Test_linklist {
 				}
 			}
 		}
-		
-		return c.val=='a'?true:false;
+
+		return c.val == 'a' ? true : false;
 
 	}
 
@@ -255,9 +255,82 @@ public class Test_linklist {
 		}
 	}
 
+	public class ListNode {
+		int val;
+		ListNode next;
+
+		ListNode(int x) {
+			val = x;
+		}
+	}
+
+	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+		if (l1 == null || l2 == null)
+			return l1 == null ? l2 : l1;
+		ListNode c = l1;
+		ListNode ced = l2;
+		ListNode r = l1;
+		ListNode ced_f = null;
+		boolean i = true;
+		while (c != null) {
+			if (c.val < ced.val) {
+				r = c.val < r.val ? c : r;
+				ListNode tem = c.next;
+				c.next = ced;
+				if (i) {
+					ced_f = c;
+					i = false;
+				} else {
+					ced_f.next = c;
+					ced_f = c;
+				}
+
+				c = tem;
+			} else if (c.val == ced.val) {
+				if(i) {
+					r=ced;
+					i=false;
+				}
+				ced_f = ced;
+				ListNode tem = c.next;
+				ListNode t = ced.next;
+				ced.next = c;
+				c.next = t;
+				ced = c;
+				
+				c = tem;
+			} else {
+				if(i) {
+					r=l2;
+					i=false;
+				}
+				ced.next = mergeTwoLists(c, ced.next);
+				return r;
+			}
+		}
+		return r;
+
+	}
+
 	@Test
 	public void test_sysout() {
-		Test_linklist t = new Test_linklist();
-		t.isValid("({})");
+		ListNode a1 = new ListNode(2);
+		ListNode te = new ListNode(1);
+		
+		ListNode tem = new ListNode(1);
+		te.next = tem;
+		tem.next = new ListNode(1);
+
+		ListNode t;
+		ListNode a2 = new ListNode(1);
+		t = new ListNode(3);
+
+		t.next = new ListNode(4);
+		ListNode r = mergeTwoLists(a1, a2);
+		while (r != null) {
+			System.out.print(r.val + "-->");
+			r = r.next;
+
+		}
 	}
 }
