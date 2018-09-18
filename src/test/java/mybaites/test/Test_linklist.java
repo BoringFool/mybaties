@@ -287,9 +287,9 @@ public class Test_linklist {
 
 				c = tem;
 			} else if (c.val == ced.val) {
-				if(i) {
-					r=ced;
-					i=false;
+				if (i) {
+					r = ced;
+					i = false;
 				}
 				ced_f = ced;
 				ListNode tem = c.next;
@@ -297,12 +297,12 @@ public class Test_linklist {
 				ced.next = c;
 				c.next = t;
 				ced = c;
-				
+
 				c = tem;
 			} else {
-				if(i) {
-					r=l2;
-					i=false;
+				if (i) {
+					r = l2;
+					i = false;
 				}
 				ced.next = mergeTwoLists(c, ced.next);
 				return r;
@@ -312,25 +312,47 @@ public class Test_linklist {
 
 	}
 
+	public int searchInsert(int[] nums, int target) {
+		if (nums.length == 0)
+			return 0;
+		return searchInsert(nums, target, 0);
+
+	}
+
+	public int searchInsert(int[] nums, int target, int len) {
+		// 终止条件
+		if (nums.length == 1) {
+			if (nums[0] >= target) {
+				return len;
+			} else {
+				return len + 1;
+			}
+		}
+		int l = nums.length >> 1;
+		int over = nums.length % 2 == 1 ? l+1 : l ;
+		if (nums[l - 1] == target) {
+			return l-1 + len;
+		} else if (nums[l - 1] > target) {
+			int[] copy = new int[l];
+			for (int i = 0; i < l; i++) {
+				copy[i] = nums[i];
+			}
+			return searchInsert(copy, target, len);
+		} else {
+			int[] copy = new int[over];
+			for (int i = 0; i < over; i++) {
+				copy[i] = nums[l+i];
+			}
+			return searchInsert(copy, target, len + l);
+		}
+	}
+
+	
+
 	@Test
 	public void test_sysout() {
-		ListNode a1 = new ListNode(2);
-		ListNode te = new ListNode(1);
-		
-		ListNode tem = new ListNode(1);
-		te.next = tem;
-		tem.next = new ListNode(1);
-
-		ListNode t;
-		ListNode a2 = new ListNode(1);
-		t = new ListNode(3);
-
-		t.next = new ListNode(4);
-		ListNode r = mergeTwoLists(a1, a2);
-		while (r != null) {
-			System.out.print(r.val + "-->");
-			r = r.next;
-
-		}
+		int[] a = { 1, 3, 5, 6 };
+		int r = searchInsert(a, 15624);
+		System.out.println(r);
 	}
 }
