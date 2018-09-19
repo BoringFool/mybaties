@@ -329,9 +329,9 @@ public class Test_linklist {
 			}
 		}
 		int l = nums.length >> 1;
-		int over = nums.length % 2 == 1 ? l+1 : l ;
+		int over = nums.length % 2 == 1 ? l + 1 : l;
 		if (nums[l - 1] == target) {
-			return l-1 + len;
+			return l - 1 + len;
 		} else if (nums[l - 1] > target) {
 			int[] copy = new int[l];
 			for (int i = 0; i < l; i++) {
@@ -341,18 +341,58 @@ public class Test_linklist {
 		} else {
 			int[] copy = new int[over];
 			for (int i = 0; i < over; i++) {
-				copy[i] = nums[l+i];
+				copy[i] = nums[l + i];
 			}
 			return searchInsert(copy, target, len + l);
 		}
 	}
 
-	
+	public int removeElement(int[] nums, int val) {
+		int i = 0;
+		for (int j = 0; j < nums.length; j++) {
+			if (nums[j] != val) {
+				nums[i] = nums[j];
+				i++;
+			}
+		}
+		return i;
+	}
+
+	public String countAndSay(int n) {
+		if (n == 1) {
+			return "1";
+		}
+
+		String a = countAndSay(--n);
+		if (a.length() == 1) {
+			return "11";
+
+		}
+		StringBuffer b = new StringBuffer();
+		int count = 1;
+		for (int i = 0; i < a.length() - 1; i++) {
+			if (a.charAt(i) == a.charAt(i + 1)) {
+				if(i==a.length()-2) {
+					b.append(++count);
+					b.append(a.charAt(i));
+				};
+				count++;
+			} else {
+				b.append(count);
+				b.append(a.charAt(i));
+				count = 1;
+				if(i==a.length()-2) {
+					b.append(count);
+					b.append(a.charAt(i+1));
+				}
+			}
+		}
+		return b.toString();
+	}
 
 	@Test
 	public void test_sysout() {
-		int[] a = { 1, 3, 5, 6 };
-		int r = searchInsert(a, 15624);
-		System.out.println(r);
+		String c = countAndSay(5);
+		System.out.println(c);
 	}
 }
